@@ -1,0 +1,236 @@
+html,body{
+  background-color: #222;
+  color: white;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chart{
+ 
+}
+.chart svg, .nodes{
+  position: absolute;
+}
+
+.node{
+  position: absolute;
+  /* background-color: white; */
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  /* overflow: hidden; */
+  display: flex;
+  /* box-shadow: -3px 3px 0px black; */
+  
+}
+
+.node .content {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  
+}
+
+.node h2{
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  text-align: center;
+}
+.node.primary h2{
+  text-align: left;
+  white-space: nowrap;
+}
+.node .content > div{
+  color: black;
+  font-size: 10px;
+  text-align: center;
+  display: flex;
+  
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.node .content {
+  justify-content: space-between;
+  padding: 10px;
+  color: black;
+}
+
+.icon{
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+}
+
+ul{
+  text-align: left;
+  /* background-color: #bbb; */
+  margin: -10px;
+  margin-left: 10px;
+  padding: 10px;
+  columns: 2;
+}
+li{
+  list-style: none;
+  /* white-space: nowrap; */
+}
+line{
+  stroke-dasharray: 0px 14px;
+  stroke-width: 10px;
+  stroke-linecap: round;
+  stroke: steelblue;
+}
+.protocol .outer{
+  background: #00dd00;
+  color: white;
+}
+
+line.cv{
+  stroke: #D25079;
+}
+line.audio{
+  stroke: red;
+}
+line.bluetooth {
+  stroke: royalblue;
+}
+line.video, line.webgl{
+  stroke: red;
+  stroke-linecap: square;
+  stroke-dasharray: 0px 20px;
+}
+line.webgl, line.realtime-data{
+  stroke: #00dd00;
+}
+line.authoring, line.code{
+  stroke-dasharray: 0px 100px;
+}
+line.electronic{
+  stroke: orange;
+}
+line.physical{
+  stroke-dasharray: 0;
+}
+
+.node.primary .outer{
+  background-color:mediumvioletred;
+}
+.primary h2{
+  color: white;
+}
+.banner img{
+  width: 240px;
+}
+
+@keyframes movingDashes{
+  from { stroke-dashoffset: 100% }
+  to { stroke-dashoffset: 0%}
+}
+line{
+  animation-name: movingDashes;
+  animation-duration: 100s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.node .outer {
+  transition: all 0.4s cubic-bezier(.68,1.77,.57,.71); 
+  /* width: auto;
+  height: auto; */
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border-top: 0.5px solid rgba(255,255,255,0.4);
+  border-right: 0.5px solid rgba(255,255,255,0.4); */
+}
+.node.just-a-dot .outer{
+  /* width: 10px;
+  height: 10px;
+  overflow: hidden; 
+  opacity: 0; */
+  transform: scale(0.5);
+  /* background-color: white; */
+  
+}
+.just-a-dot *{
+  opacity: 0;
+  transition: all 0.4s linear;
+}
+
+
+.node {
+  cursor: crosshair;
+  user-select: none;
+  /* */
+}
+
+.node:after{
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  content: " ";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  border-radius: 10px;
+  z-index: -1;
+}
+.node.primary:after{
+  background-color: #ff2099;
+  border-radius: 5px;
+}
+
+.meta{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  padding: 10px;
+}
+
+
+.legend{
+  pointer-events: none;
+  position: relative;
+}
+.legend > div{
+  width: 400px;
+  position: absolute;
+  bottom:0;
+  right: 0;
+  
+}
+.legend svg{
+  display: block;
+  width: 100px;
+  height: 20px;
+  position: relative;
+  margin-left: 5px;
+}
+.legend line{
+  animation-duration: 5s;
+}
+.legend > div > div{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 5px;
+}
+.legend > div > div > div{
+  display: block;
+  text-align: right;
+}
+
+.legend > div{
+  right: -450px;
+  transition: all 0.2s cubic-bezier(.68,1.77,.57,.71);
+}
+.legend.showing > div{
+  right: 0px;
+}
